@@ -11,17 +11,21 @@
 
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+
+import Header from 'components/Header/index';
 import messages from './messages';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
   render() {
     return (
-      <h1>
-        <h5>Hello</h5>
-        <h6>Hello</h6>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <div>
+        <Header />
+
+        <h1>
+          <FormattedMessage {...messages.header} />
+        </h1>
+      </div>
     );
   }
 }
