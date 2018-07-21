@@ -17,6 +17,7 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import MainLayout from 'containers/MainLayout/index';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import MainPage from 'containers/MainPage/index';
 
 // eslint-disable-next-line
 export function RouteWithLayout({ layout, component, ...rest }) {
@@ -41,7 +42,7 @@ export default function App() {
         exact
         layout={MainLayout}
         path="/"
-        component={HomePage}
+        component={MainPage}
       />
       <Route component={NotFoundPage} />
     </Switch>

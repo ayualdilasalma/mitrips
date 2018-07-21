@@ -1,8 +1,8 @@
 /*
- *
- * MainLayout actions
- *
- */
+   *
+   * MainLayout actions
+   *
+   */
 
 import { DEFAULT_ACTION } from './constants';
 
