@@ -5,6 +5,7 @@ const Content = styled.div`
   position: relative;
   width: 64px;
   height: 64px;
+  margin: 0 auto;
 
   div {
     position: absolute;
