@@ -10,16 +10,18 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { Row } from 'reactstrap';
 
 import Spinner from 'components/Spinner/index';
+import TripItem from 'components/TripItem/index';
+import beaches from '!file-loader?name=[name].[ext]!../../images/nusapenida.jpg';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import { selectLoading, makeSelectMainPage } from './selectors';
+import { selectLoading, makeSelectMainPage, selectTrips } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { loadDataStart } from './actions';
-import { Row } from 'reactstrap';
 
 /* eslint-disable react/prefer-stateless-function */
 export class MainPage extends React.Component {
@@ -28,10 +30,14 @@ export class MainPage extends React.Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading, trips } = this.props;
     let content;
     if (loading) {
       content = <Spinner />;
+    } else if (trips) {
+      content = trips.map(item => (
+        <TripItem key={item.name} title={item.name} image={beaches} />
+      ));
     }
     return (
       <Row>
@@ -48,11 +54,13 @@ export class MainPage extends React.Component {
 MainPage.propTypes = {
   onLoadData: PropTypes.func.isRequired,
   loading: PropTypes.any,
+  trips: PropTypes.arrayOf(PropTypes.object),
 };
 
 const mapStateToProps = createStructuredSelector({
   mainpage: makeSelectMainPage(),
   loading: selectLoading(),
+  trips: selectTrips(),
 });
 
 function mapDispatchToProps(dispatch) {
