@@ -39,14 +39,16 @@ export class MainLayout extends React.Component {
 
   render() {
     return (
-      <Container>
+      <div>
         <Helmet>
           <title>MainLayout</title>
           <meta name="description" content="Description of MainLayout" />
         </Helmet>
         <Header toggle={this.toggle} isOpen={this.state.isOpen} />
-        <Row>{this.props.children}</Row>
-      </Container>
+        <Container>
+          <Row>{this.props.children}</Row>
+        </Container>
+      </div>
     );
   }
 }

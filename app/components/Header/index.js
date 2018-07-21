@@ -16,6 +16,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 // import styled from 'styled-components';
+import Content from './Content';
 import navigations from './navigations';
 
 function Header(props) {
@@ -34,7 +35,7 @@ function Header(props) {
   ));
 
   return (
-    <div>
+    <Content>
       <Navbar color="light" light expand="md">
         <NavbarBrand>mitrip</NavbarBrand>
         <NavbarToggler onClick={props.toggle} />
@@ -44,7 +45,7 @@ function Header(props) {
           </Nav>
         </Collapse>
       </Navbar>
-    </div>
+    </Content>
   );
 }
 
