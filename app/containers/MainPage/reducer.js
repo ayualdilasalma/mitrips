@@ -34,10 +34,12 @@ function loadDataStart(state) {
 }
 
 function loadDataFinish(state, action) {
-  return state
-    .set('loading', false)
-    .set('trips', action.data)
-    .set('error', null);
+  return (
+    state
+      //  .set('loading', false)
+      .set('trips', action.data)
+      .set('error', null)
+  );
 }
 
 function loadDataFail(state, action) {

@@ -45,9 +45,7 @@ export class MainLayout extends React.Component {
           <meta name="description" content="Description of MainLayout" />
         </Helmet>
         <Header toggle={this.toggle} isOpen={this.state.isOpen} />
-        <Container>
-          <Row>{this.props.children}</Row>
-        </Container>
+        <Container>{this.props.children}</Container>
       </div>
     );
   }

@@ -19,6 +19,7 @@ import { selectLoading, makeSelectMainPage } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { loadDataStart } from './actions';
+import { Row } from 'reactstrap';
 
 /* eslint-disable react/prefer-stateless-function */
 export class MainPage extends React.Component {
@@ -33,13 +34,13 @@ export class MainPage extends React.Component {
       content = <Spinner />;
     }
     return (
-      <div>
+      <Row>
         <Helmet>
           <title>MainPage</title>
           <meta name="description" content="Description of MainPage" />
         </Helmet>
         {content}
-      </div>
+      </Row>
     );
   }
 }

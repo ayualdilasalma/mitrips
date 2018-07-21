@@ -17,8 +17,9 @@ function* loadDataSaga() {
       method: 'GET',
     };
     const response = yield call(request, config);
-    yield put(loadDataFinish, response.data);
+    console.log(response.data);
+    yield put(loadDataFinish(response.data));
   } catch (error) {
-    //  yield put(loadDataFailed);
+    yield put(loadDataFailed(error));
   }
 }
