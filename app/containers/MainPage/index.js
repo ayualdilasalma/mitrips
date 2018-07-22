@@ -36,7 +36,13 @@ export class MainPage extends React.Component {
       content = <Spinner />;
     } else if (trips) {
       content = trips.map(item => (
-        <TripItem key={item.name} title={item.name} image={beaches} />
+        <TripItem
+          key={item.name}
+          title={item.name}
+          image={beaches}
+          author={item.tripper.name}
+          participants={item.participants}
+        />
       ));
     }
     return (
