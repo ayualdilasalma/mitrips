@@ -13,6 +13,7 @@ import { compose } from 'redux';
 import { Row, Container } from 'reactstrap';
 
 import Header from 'components/Header/index';
+import Footer from 'components/Footer/index';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -46,6 +47,7 @@ export class MainLayout extends React.Component {
         </Helmet>
         <Header toggle={this.toggle} isOpen={this.state.isOpen} />
         <Container>{this.props.children}</Container>
+        <Footer />
       </div>
     );
   }

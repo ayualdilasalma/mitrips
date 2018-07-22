@@ -6,7 +6,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row } from 'reactstrap';
 import profpic from '!file-loader?name=[name].[ext]!../../images/profpict.jpg';
 import moment from 'moment';
 import { formatNumber } from 'utils/helper';
