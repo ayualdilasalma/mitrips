@@ -2,9 +2,8 @@ import { Col } from 'reactstrap';
 import styled from 'styled-components';
 
 const Wrapper = styled(Col)`
-  background-color: white;
-  margin: 10px 15px;
-  padding: 0px 0px 10px;
+  margin: 10px 0px;
+  padding: 0px 5px 10px;
 `;
 
 const RowWrapper = styled.div`

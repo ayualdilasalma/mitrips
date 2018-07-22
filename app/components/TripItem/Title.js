@@ -1,6 +1,17 @@
 import styled from 'styled-components';
 const Title = styled.div`
-  margin: 10px;
+  background-color: white;
+  padding: 10px;
+  height: 180px;
+
+  h4 {
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 5px;
+  }
+
   p > span {
     color: purple;
   }

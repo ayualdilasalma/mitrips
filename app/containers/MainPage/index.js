@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import { Row } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 import Spinner from 'components/Spinner/index';
 import TripItem from 'components/TripItem/index';
@@ -42,17 +42,20 @@ export class MainPage extends React.Component {
           image={beaches}
           author={item.tripper.name}
           participants={item.participants}
+          startDate={item.startDate}
+          endDate={item.endDate}
+          budget={item.budget}
         />
       ));
     }
     return (
-      <Row>
+      <Col lg={12}>
         <Helmet>
           <title>MainPage</title>
           <meta name="description" content="Description of MainPage" />
         </Helmet>
-        {content}
-      </Row>
+        <Row>{content}</Row>
+      </Col>
     );
   }
 }

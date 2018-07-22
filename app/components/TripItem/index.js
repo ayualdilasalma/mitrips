@@ -8,14 +8,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row } from 'reactstrap';
 import profpic from '!file-loader?name=[name].[ext]!../../images/profpict.jpg';
+import moment from 'moment';
+import { formatNumber } from 'utils/helper';
 
 import { Wrapper, RowWrapper } from './Wrapper';
 import Image from './Img';
-import Title from './Title';
+import Content from './Title';
 import Profile from './Profile';
 
 function TripItem(props) {
-  const { image, title, author, participants } = props;
+  const {
+    image,
+    title,
+    author,
+    participants,
+    startDate,
+    endDate,
+    budget,
+  } = props;
   let participantList;
   if (participants) {
     participantList = participants.map(participant => {
@@ -34,13 +44,15 @@ function TripItem(props) {
   return (
     <Wrapper xs={12} sm={6} lg={4}>
       <Image src={image} alt={title} />
-      <Title>
-        <h6>{title}</h6>
+      <Content>
+        <h4>{title}</h4>
         <p>
           by <span>{author}</span>
         </p>
-      </Title>
-      <RowWrapper>{participantList}</RowWrapper>
+        <h6>{formatNumber(String(budget))}</h6>
+        <h6>{moment(startDate).format('DD MMM YYYY')}</h6>
+        <RowWrapper>{participantList}</RowWrapper>
+      </Content>
     </Wrapper>
   );
 }
@@ -50,6 +62,9 @@ TripItem.propTypes = {
   image: PropTypes.string,
   author: PropTypes.string,
   participants: PropTypes.array,
+  startDate: PropTypes.string,
+  endDate: PropTypes.string,
+  budget: PropTypes.string,
 };
 
 export default TripItem;
