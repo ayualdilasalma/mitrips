@@ -16,6 +16,8 @@ import {
   NavLink,
 } from 'reactstrap';
 import PropTypes from 'prop-types';
+import { NavLink as RRNavLink } from 'react-router-dom';
+
 // import styled from 'styled-components';
 import profpic from '!file-loader?name=[name].[ext]!../../images/profpict.jpg';
 
@@ -33,7 +35,9 @@ function Header(props) {
 
   const navigationItems = navArray.map(item => (
     <NavItem key={item.id}>
-      <NavLink>{item.config.name}</NavLink>
+      <NavLink tag={RRNavLink} to={item.config.link}>
+        {item.config.name}
+      </NavLink>
     </NavItem>
   ));
 

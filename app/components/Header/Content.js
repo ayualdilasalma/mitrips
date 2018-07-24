@@ -15,6 +15,10 @@ const Content = styled.header`
     flex-grow: 1;
   }
 
+  a {
+    font-size: 1.2rem;
+  }
+
   .navbar-collapse {
     flex-grow: 0;
   }
