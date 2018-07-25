@@ -115,7 +115,7 @@ export class TripDetail extends React.Component {
           <Col lg={8}>
             <h1>{name}</h1>
             <h5>
-              By <span>{tripper[0].name}</span>
+              By <span>{tripper.name}</span>
             </h5>
             <img src={beaches} alt="" />
           </Col>

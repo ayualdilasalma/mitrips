@@ -41,12 +41,11 @@ function* addDataSaga() {
           activity: 'Meet up at Muara Angke Dock',
         },
       ],
-      tripper: [
+      tripper:
         {
           name: 'Fidelis',
           userId: '-',
         },
-      ],
       startDate: '2018-09-07T16:00:00.000Z',
       budget: 450000,
       name: 'Gili Labak Trip',
