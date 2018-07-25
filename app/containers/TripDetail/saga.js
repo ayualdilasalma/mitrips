@@ -25,42 +25,46 @@ function* loadDataSaga(payload) {
 
 function* addDataSaga() {
   try {
+    const dataAdd = {
+      participants: [
+        {
+          name: 'Test',
+        },
+        {
+          name: 'Adit',
+        },
+      ],
+      endDate: '2018-09-08T16:00:00.000Z',
+      schedules: [
+        {
+          time: '2018-09-07T21:00:00.000Z',
+          activity: 'Meet up at Muara Angke Dock',
+        },
+      ],
+      tripper: [
+        {
+          name: 'Fidelis',
+          userId: '-',
+        },
+      ],
+      startDate: '2018-09-07T16:00:00.000Z',
+      budget: 450000,
+      name: 'Gili Labak Trip',
+      id: 'RSO9GQDVr6HX0KLhDuTe',
+    };
     const config = {
       url: `trip-save`,
       method: 'POST',
-      data: {
-        participants: [
-          {
-            name: 'Test',
-          },
-        ],
-        endDate: '2018-09-08T16:00:00.000Z',
-        schedules: [
-          {
-            activity: 'Meet up at Muara Angke Dock',
-            time: '2018-09-07T21:00:00.000Z',
-          },
-        ],
-        tripper: [
-          {
-            name: 'Fidelis',
-            userId: '-',
-          },
-          {
-            name: 'Aditya PM',
-            userId: '01',
-          },
-        ],
-        startDate: '2018-09-07T16:00:00.000Z',
-        budget: 450000,
-        name: 'Gili Labak Trip',
-        id: 'RSO9GQDVr6HX0KLhDuTe',
-      },
+      data: dataAdd,
     };
     const response = yield call(request, config);
     const { data } = response;
-    yield put(actions.loadDataAction(data.id));
+    let idUpdatedData = data.split("'");
+    idUpdatedData = idUpdatedData[1].split("'");
+    // console.log(idUpdatedData[0]);
+    yield put(actions.loadDataAction(idUpdatedData[0]));
   } catch (error) {
-    yield put(actions.loadDataFailAction(error));
+    // console.log(error);
+    yield put(actions.loadDataFailAction('Failed to add participants'));
   }
 }

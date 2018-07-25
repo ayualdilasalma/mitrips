@@ -76,6 +76,7 @@ export class TripDetail extends React.Component {
 
   onAddParticipants() {
     this.props.onAddData();
+    this.toggle();
   }
 
   render() {
@@ -114,7 +115,7 @@ export class TripDetail extends React.Component {
           <Col lg={8}>
             <h1>{name}</h1>
             <h5>
-              By <span>{tripper.name}</span>
+              By <span>{tripper[0].name}</span>
             </h5>
             <img src={beaches} alt="" />
           </Col>
