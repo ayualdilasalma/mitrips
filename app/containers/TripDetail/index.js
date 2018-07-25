@@ -84,18 +84,22 @@ export class TripDetail extends React.Component {
     let content;
     if (loading) {
       content = <Spinner />;
-    }
-    if (error) {
+    } else if (error) {
       content = <Alert color="danger">{error}</Alert>;
-    }
-    if (trip) {
+    } else if (trip) {
       const { name, tripper, budget, participants, schedules } = trip;
-      const timelines = schedules.map(schedule => (
-        <TimelineEvent
-          title={schedule.activity}
-          createdAt={moment(schedule.time).format('hh:mm')}
-        />
-      ));
+      const timelines = schedules.map(schedule => {
+        return (
+          <Timeline>
+            {Object.keys(schedule).map(item => (
+              <TimelineEvent
+                title={schedule[item].activity}
+                createdAt={moment(schedule[item].time).format('hh:mm')}
+              />
+            ))}
+          </Timeline>
+        );
+      });
       const participantList = participants.map(participant => {
         if (participant) {
           return (
@@ -126,9 +130,7 @@ export class TripDetail extends React.Component {
               </button>
               <h6>for {formatNumber(String(budget))}</h6>
             </div>
-            <div className="timeline-container">
-              <Timeline>{timelines}</Timeline>
-            </div>
+            <div className="timeline-container">{timelines}</div>
             <div className="participant-container">{participantList}</div>
           </Col>
           <Modal isOpen={this.state.modal} toggle={this.toggle}>

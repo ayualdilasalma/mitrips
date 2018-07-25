@@ -50,10 +50,7 @@ function loadDataFailReducer(state, action) {
 }
 
 function onAddDataReducer(state) {
-  return state
-    .set('loading', true)
-    .set('error', null)
-    .set('trip', null);
+  return state.set('loading', true).set('error', null);
 }
 
 export default tripDetailReducer;

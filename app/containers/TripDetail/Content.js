@@ -54,6 +54,7 @@ const Content = styled(Row)`
   .participant-container img {
     max-width: 10%;
     border-radius: 50%;
+    margin-right: 5px;
   }
 `;
 

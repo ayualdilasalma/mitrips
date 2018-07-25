@@ -1,7 +1,8 @@
-import { takeEvery, take, call, put, select } from 'redux-saga/effects';
+import { takeEvery, call, put, select } from 'redux-saga/effects';
 import request from 'utils/request';
 import * as actionTypes from './constants';
 import * as actions from './actions';
+import { selectTripItem } from './selectors';
 
 // Individual exports for testing
 export default function* defaultSaga() {
@@ -25,43 +26,22 @@ function* loadDataSaga(payload) {
 
 function* addDataSaga() {
   try {
-    const dataAdd = {
-      participants: [
-        {
-          name: 'Test',
-        },
-        {
-          name: 'Adit',
-        },
-      ],
-      endDate: '2018-09-08T16:00:00.000Z',
-      schedules: [
-        {
-          time: '2018-09-07T21:00:00.000Z',
-          activity: 'Meet up at Muara Angke Dock',
-        },
-      ],
-      tripper:
-        {
-          name: 'Fidelis',
-          userId: '-',
-        },
-      startDate: '2018-09-07T16:00:00.000Z',
-      budget: 450000,
-      name: 'Gili Labak Trip',
-      id: 'RSO9GQDVr6HX0KLhDuTe',
-    };
+    const dataOld = yield select(selectTripItem());
+    dataOld.participants.push({
+      name: 'Test',
+    });
     const config = {
       url: `trip-save`,
       method: 'POST',
-      data: dataAdd,
+      data: dataOld,
     };
-    const response = yield call(request, config);
-    const { data } = response;
-    let idUpdatedData = data.split("'");
-    idUpdatedData = idUpdatedData[1].split("'");
+    yield call(request, config);
+    //  const { data } = response;
+    //  let idUpdatedData = data.split("'");
+    //  idUpdatedData = idUpdatedData[1].split("'");
     // console.log(idUpdatedData[0]);
-    yield put(actions.loadDataAction(idUpdatedData[0]));
+    yield put(actions.loadDataAction(dataOld.id));
+    //  console.log(dataOld);
   } catch (error) {
     // console.log(error);
     yield put(actions.loadDataFailAction('Failed to add participants'));
