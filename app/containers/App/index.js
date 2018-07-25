@@ -19,6 +19,7 @@ import MainLayout from 'containers/MainLayout/index';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import MainPage from 'containers/MainPage/index';
 import TripDetail from 'containers/TripDetail/index';
+import CreateTrip from 'containers/CreateTrip/index';
 
 // eslint-disable-next-line
 export function RouteWithLayout({ layout, component, ...rest }) {
@@ -44,6 +45,13 @@ export default function App() {
         layout={MainLayout}
         path="/trip/:id"
         component={TripDetail}
+      />
+
+      <RouteWithLayout
+        exact
+        layout={MainLayout}
+        path="/create"
+        component={CreateTrip}
       />
 
       <RouteWithLayout
