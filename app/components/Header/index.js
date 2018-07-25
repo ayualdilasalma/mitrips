@@ -58,6 +58,11 @@ function Header(props) {
             </Nav>
           </Collapse>
           <div className="search-container">
+            <RRNavLink to="/create">
+              <span>
+                <i className="fas fa-plus" />
+              </span>
+            </RRNavLink>
             <span>
               <i className="fas fa-search" />
             </span>

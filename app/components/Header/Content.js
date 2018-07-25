@@ -36,6 +36,10 @@ const Content = styled.header`
     color: black;
     margin-right: 15px;
   }
+
+  .search-container > span {
+    margin: 0 10px;
+  }
 `;
 
 export default Content;
