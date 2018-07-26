@@ -1,6 +1,6 @@
 const navList = {
   home: {
-    link: 'home',
+    link: '/',
     name: 'Home',
   },
   trips: {

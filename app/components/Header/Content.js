@@ -15,6 +15,10 @@ const Content = styled.header`
     flex-grow: 1;
   }
 
+  a {
+    font-size: 1.2rem;
+  }
+
   .navbar-collapse {
     flex-grow: 0;
   }
@@ -31,6 +35,10 @@ const Content = styled.header`
   .search-container {
     color: black;
     margin-right: 15px;
+  }
+
+  .search-container > span {
+    margin: 0 10px;
   }
 `;
 

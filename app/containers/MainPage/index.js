@@ -14,7 +14,6 @@ import { Row, Col } from 'reactstrap';
 
 import Spinner from 'components/Spinner/index';
 import TripItem from 'components/TripItem/index';
-import beaches from '!file-loader?name=[name].[ext]!../../images/nusapenida.jpg';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -35,18 +34,7 @@ export class MainPage extends React.Component {
     if (loading) {
       content = <Spinner />;
     } else if (trips) {
-      content = trips.map(item => (
-        <TripItem
-          key={item.name}
-          title={item.name}
-          image={beaches}
-          author={item.tripper.name}
-          participants={item.participants}
-          startDate={item.startDate}
-          endDate={item.endDate}
-          budget={item.budget}
-        />
-      ));
+      content = trips.map(item => <TripItem key={item.id} config={item} />);
     }
     return (
       <Col lg={12}>
