@@ -53,19 +53,34 @@ export class CreateTrip extends React.Component {
   }
 
   addActivity() {
-    console.log(this.state.timeTimeline);
-    console.log(this.state.activity);
-    console.log(this.state.temporaryTimeline);
+    const temporaryTimeline = this.state.temporaryTimeline;
+
+    temporaryTimeline.push({
+      time: this.state.timeTimeline,
+      activity: this.state.activity,
+    });
+
+    console.log(temporaryTimeline);
+
+    this.setState({
+      temporaryTimeline,
+      timeTimeline: '',
+      activity: '',
+    });
+
+    // console.log(this.state.timeTimeline);
+    // console.log(this.state.activity);
+    // console.log(this.state.temporaryTimeline);
   }
 
   addTimeline() {
-    const timelines = [];
-    timelines.push({
-      [this.state.dateTimeline]: {},
-    });
-    this.setState({
-      temporaryTimeline: timelines,
-    });
+    // const timelines = [];
+    // timelines.push({
+    //   [this.state.dateTimeline]: {},
+    // });
+    // this.setState({
+    //   temporaryTimeline: timelines,
+    // });
     this.setState({
       showTimeTimeline: true,
       showDateTimeline: false,
@@ -78,9 +93,20 @@ export class CreateTrip extends React.Component {
   }
 
   stopAddActivity() {
+    const timelineArray = this.state.timelineArray;
+
+    timelineArray.push({
+      [this.state.dateTimeline]: this.state.temporaryTimeline,
+    });
+
+    console.log(timelineArray);
+
     this.setState({
       showTimeTimeline: false,
       showDateTimeline: true,
+      timelineArray,
+      temporaryTimeline: [],
+      dateTimeline: '',
     });
   }
 
@@ -103,7 +129,7 @@ export class CreateTrip extends React.Component {
             <Input
               type="text"
               name="budget"
-              id="budger"
+              id="budget"
               placeholder=""
               onChange={this.handleChange}
             />
@@ -161,7 +187,7 @@ export class CreateTrip extends React.Component {
                   placeholder=""
                   onChange={this.handleChange}
                 />
-                <Button onClick={this.addActivity}>Add Timeline</Button>
+                <Button onClick={this.addActivity}>Add Activity</Button>
                 <Button onClick={this.stopAddActivity}>Finish</Button>
               </FormGroup>
             </div>
