@@ -10,10 +10,14 @@ const selectCreateTripDomain = state => state.get('createTrip', initialState);
 /**
  * Other specific selectors
  */
-const selectLoadingCreate = createSelector(selectCreateTripDomain, substate => substate.get('loading'));
-const selectStatusCreate = createSelector(selectCreateTripDomain, substate => substate.get('success'));
-const selectDataCreate = createSelector(selectCreateTripDomain, substate => substate.get('data'));
-
+const selectLoadingCreate = () =>
+  createSelector(selectCreateTripDomain, substate => substate.get('loading'));
+const selectStatusCreate = () =>
+  createSelector(selectCreateTripDomain, substate => substate.get('success'));
+const selectDataCreate = () =>
+  createSelector(selectCreateTripDomain, substate => substate.get('data'));
+const selectErrorCreate = () =>
+  createSelector(selectCreateTripDomain, substate => substate.get('error'));
 
 /**
  * Default selector used by CreateTrip
@@ -22,5 +26,12 @@ const selectDataCreate = createSelector(selectCreateTripDomain, substate => subs
 const makeSelectCreateTrip = () =>
   createSelector(selectCreateTripDomain, substate => substate.toJS());
 
-  export default makeSelectCreateTrip;
-export { selectCreateTripDomain, selectLoadingCreate, selectDataCreate, selectStatusCreate };
+// export default makeSelectCreateTrip;
+export {
+  makeSelectCreateTrip,
+  selectCreateTripDomain,
+  selectLoadingCreate,
+  selectDataCreate,
+  selectStatusCreate,
+  selectErrorCreate,
+};

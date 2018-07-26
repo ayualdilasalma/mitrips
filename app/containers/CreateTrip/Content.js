@@ -9,6 +9,15 @@ const Content = styled(Row)`
 
   div.form-check {
     text-align: center;
+    margin-top: 20px;
+  }
+
+  .btn-group-activity {
+    margin-top: 10px;
+  }
+
+  .btn-group-activity button {
+    margin-right: 5px;
   }
 `;
 

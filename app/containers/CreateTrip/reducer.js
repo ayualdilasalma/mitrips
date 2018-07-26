@@ -18,9 +18,9 @@ function createTripReducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.ON_CREATE_TRIP_START:
       return onCreateReducer(state, action);
-      case actionTypes.ON_CREATE_TRIP_FINISH:
+    case actionTypes.ON_CREATE_TRIP_FINISH:
       return onCreateFinishReducer(state, action);
-      case actionTypes.ON_CREATE_TRIP_FAILED:
+    case actionTypes.ON_CREATE_TRIP_FAILED:
       return onCreateFailedReducer(state, action);
     default:
       return state;
@@ -28,16 +28,26 @@ function createTripReducer(state = initialState, action) {
 }
 
 function onCreateReducer(state, action) {
-  return state.set('loading', true).set('data', null).set('success', null);
+  return state
+    .set('loading', true)
+    .set('data', null)
+    .set('success', null)
+    .set('error', null);
 }
 
 function onCreateFinishReducer(state, action) {
-  return state.set('loading', false).set('data', action.data).set('success', true);
+  return state
+    .set('loading', false)
+    .set('data', action.data)
+    .set('success', action.data);
 }
 
 function onCreateFailedReducer(state, action) {
-  return state.set('loading', false).set('data', null).set('success', false);
+  return state
+    .set('loading', false)
+    .set('data', null)
+    .set('success', false)
+    .set('error', action.error);
 }
-
 
 export default createTripReducer;

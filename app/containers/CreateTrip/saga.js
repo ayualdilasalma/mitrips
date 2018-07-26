@@ -1,4 +1,4 @@
-import { take, call, put, select, takeEvery } from 'redux-saga/effects';
+import { call, takeEvery } from 'redux-saga/effects';
 import request from 'utils/request';
 
 import * as actionTypes from './constants';
@@ -15,10 +15,10 @@ function* createTripSaga(payload) {
     const config = {
       method: 'POST',
       url: 'trip-save',
-      data: payload.data
-    }
+      data: payload.data,
+    };
     const response = yield call(request, config);
-    console.log(response);
+    //  console.log(response);
     yield call(actions.onCreateFinishAction(response.data));
   } catch (error) {
     console.log(error);
