@@ -4,10 +4,25 @@
  *
  */
 
-import { DEFAULT_ACTION } from './constants';
+import * as actionTypes from './constants';
 
-export function defaultAction() {
+export function onCreateAction(data) {
   return {
-    type: DEFAULT_ACTION,
+    type: actionTypes.ON_CREATE_TRIP_START,
+    data
   };
+}
+
+export function onCreateFinishAction(payload) {
+  return {
+    type: actionTypes.ON_CREATE_TRIP_FINISH,
+    data: payload
+  }
+}
+
+export function onCreateFailedAction(erorr) {
+  return {
+    type: actionTypes.ON_CREATE_TRIP_FAILED,
+    error
+  }
 }

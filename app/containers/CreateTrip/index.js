@@ -17,6 +17,7 @@ import makeSelectCreateTrip from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import Content from './Content';
+import * as actions from './actions';
 
 /* eslint-disable react/prefer-stateless-function */
 export class CreateTrip extends React.Component {
@@ -90,6 +91,22 @@ export class CreateTrip extends React.Component {
   handleSubmit(event) {
     console.log(this.state.startDate);
     event.preventDefault();
+    console.log(this.state.timelineArray);
+    const data = {
+      "tripper": {
+          "name": "Fidelis",
+          "userId": "-"
+      },
+      "startDate": this.state.startDate,
+      "budget": this.state.budget,
+      "name": this.state.name,
+      "participants": [
+      ],
+      "endDate": this.state.endDate,
+      "schedules": this.state.timelineArray
+    };
+    console.log(data);
+    this.props.onCreateData(data);
   }
 
   stopAddActivity() {
@@ -211,7 +228,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    onCreateData: (data) => dispatch( actions.onCreateAction(data)),
   };
 }
 
